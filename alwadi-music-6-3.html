@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AlWadi Musical Instruments</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Serif+Hebrew:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg0:#f5efe6;--bg1:#faf6f0;--bg2:#f0e8da;--bg3:#e8dccb;--bg4:#dfd0ba;
+  --gold:#8B6914;--gold2:#a07c2a;--gold3:#c4952a;--gold4:#6b4f0e;
+  --text:#2c1f0e;--text2:#5a3e1e;--text3:#8a6840;
+  --border:rgba(139,105,20,0.2);--border2:rgba(139,105,20,0.1);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg1);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;line-height:1.7;}
+
+/* LANGUAGE FONT CONFIGURATION */
+html[lang="ar"] body{font-family:'Noto Naskh Arabic',serif;}
+html[lang="he"] body{font-family:'Noto Serif Hebrew',serif;}
+html[lang="ar"] .nav-logo .logo-name{font-family:'Noto Naskh Arabic',serif;font-size:1.15rem;}
+html[lang="he"] .nav-logo .logo-name{font-family:'Noto Serif Hebrew',serif;font-size:1.15rem;}
+html[lang="ar"] .beat-title, html[lang="ar"] h2, html[lang="ar"] .craft-section-title{font-family:'Noto Naskh Arabic',serif;font-style:normal;}
+html[lang="he"] .beat-title, html[lang="he"] h2, html[lang="he"] .craft-section-title{font-family:'Noto Serif Hebrew',serif;}
+html[lang="ar"] .hero-main-title{font-family:'Noto Naskh Arabic',serif;}
+html[lang="he"] .hero-main-title{font-family:'Noto Serif Hebrew',serif;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:72px;background:rgba(250,246,240,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border2);}
+html[dir="rtl"] nav{flex-direction:row-reverse;}
+
+.nav-logo{text-decoration:none;display:flex;align-items:center;gap:12px;color:var(--gold);}
+html[dir="rtl"] .nav-logo{flex-direction:row-reverse;}
+
+.nav-logo-img{width:42px;height:42px;object-fit:contain;flex-shrink:0;}
+.logo-text-group{display:flex;flex-direction:column;line-height:1.2;}
+
+.nav-logo .logo-name, .nav-logo:link .logo-name, .nav-logo:visited .logo-name {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.35rem;
+  font-weight:600;
+  letter-spacing:0.04em;
+  color:var(--gold) !important;
+  text-decoration:none;
+}
+.nav-logo .logo-tagline{font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text3);margin-top:3px;}
+.nav-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
+html[dir="rtl"] .nav-right{align-items:flex-start;}
+.nav-tabs{display:flex;gap:2rem;list-style:none;}
+.nav-tabs a{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);text-decoration:none;transition:color 0.3s;}
+.nav-tabs a:hover{color:var(--gold);}
+html[lang="ar"] .nav-tabs a, html[lang="he"] .nav-tabs a{letter-spacing:0.04em;}
+.lang-switcher{display:flex;gap:0.5rem;align-items:center;}
+.lang-btn{font-size:0.65rem;letter-spacing:0.1em;padding:2px 8px;background:transparent;border:1px solid var(--border);color:var(--text3);cursor:pointer;transition:all 0.3s;font-family:'DM Sans',sans-serif;}
+.lang-btn.active,.lang-btn:hover{border-color:var(--gold3);color:var(--gold);background:rgba(232,200,122,0.06);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;position:relative;overflow:hidden;}
+.hero-bg-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 45% at 50% 40%,rgba(196,149,42,0.10) 0%,transparent 65%);}
+.hero-ornament{font-family:'Noto Naskh Arabic',serif;font-size:9rem;font-weight:700;color:rgba(139,105,20,0.07);line-height:1;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;white-space:nowrap;direction:rtl;letter-spacing:-0.02em;}
+.hero-content{position:relative;max-width:780px;}
+.hero-main-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,4.5rem);font-weight:300;color:var(--gold4);line-height:1.15;margin-bottom:0.5rem;text-shadow:0 2px 20px rgba(139,105,20,0.12);}
+html[lang="ar"] .hero-main-title{font-weight:700;font-style:normal;}
+html[lang="he"] .hero-main-title{font-weight:600;}
+.hero-craft{font-size:0.72rem;letter-spacing:0.38em;text-transform:uppercase;color:var(--gold3);margin-bottom:1.6rem;display:flex;align-items:center;justify-content:center;gap:1rem;}
+.hero-craft span{color:var(--gold);opacity:0.4;font-size:0.65rem;}
+html[lang="ar"] .hero-craft, html[lang="he"] .hero-craft{letter-spacing:0.1em;}
+.hero-sub{font-size:0.97rem;color:var(--text3);max-width:520px;margin:0 auto 2.8rem;line-height:1.85;font-weight:300;}
+.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-gold{background:var(--gold3);color:var(--bg0);padding:0.85rem 2.2rem;font-family:'DM Sans',sans-serif;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;border:none;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;}
+.btn-gold:hover{background:var(--gold);transform:translateY(-2px);}
+html[lang="ar"] .btn-gold, html[lang="he"] .btn-gold{font-family:inherit;letter-spacing:0.04em;}
+.btn-wa{background:transparent;color:var(--text2);padding:0.85rem 2.2rem;font-family:'DM Sans',sans-serif;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:400;border:1px solid var(--border);cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;}
+.btn-wa:hover{border-color:var(--gold);color:var(--gold4);background:rgba(139,105,20,0.06);}
+html[lang="ar"] .btn-wa, html[lang="he"] .btn-wa{font-family:inherit;letter-spacing:0.04em;}
+.wa-icon{width:18px;height:18px;fill:currentColor;flex-shrink:0;}
+
+/* DIVIDERS */
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:0 4rem;}
+.section-divider{display:flex;align-items:center;gap:1.5rem;padding:0 4rem;margin-bottom:-1rem;}
+.section-divider-line{flex:1;height:1px;background:var(--border2);}
+
+/* SECTIONS */
+.beat{padding:6rem 4rem 3rem;}
+.beat-header{margin-bottom:3rem;}
+.beat-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,4vw,4rem);font-weight:300;color:var(--gold4);line-height:1.1;}
+.beat-title em{font-style:italic;color:var(--gold2);}
+.beat-sub{font-size:0.95rem;color:var(--text3);max-width:640px;line-height:1.8;margin-top:0.75rem;}
+.beat-sub p+p{margin-top:0.6rem;}
+
+/* EXTENDED WIDER CRAFT CARPENTRY GALLERY (3 WIDER COLUMNS) */
+.craft-sub-section{padding:1rem 4rem 5rem;}
+.craft-section-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--gold4);margin-bottom:0.5rem;}
+.craft-section-text{font-size:0.95rem;color:var(--text2);max-width:640px;margin-bottom:2rem;}
+.grid-craft-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;height:240px;direction:ltr !important;}
+
+/* PHOTO GRIDS BASE */
+.grid-music4{display:grid;grid-template-columns:1.8fr 1fr 1.2fr;grid-template-rows:260px 200px;gap:6px;}
+.grid-music4 .p1{grid-column:1;grid-row:1 / span 2;}
+.grid-music4 .p2{grid-column:2;grid-row:1 / span 2;}
+.grid-music4 .p3{grid-column:3;grid-row:1;}
+.grid-music4 .p4{grid-column:3;grid-row:2;}
+
+/* 4-COLUMN EQUAL HEIGHT CALLIGRAPHY FLEX-GRID */
+.grid-calli{display:flex;align-items:flex-start;justify-content:center;gap:20px;padding-bottom:3rem;width:100%;}
+
+.photo-block{overflow:hidden;position:relative;background:var(--bg2);height:100%;width:100%;}
+.photo-block img{width:100%;height:100%;display:block;object-fit:cover;transition:transform 0.5s ease;}
+
+.grid-calli .photo-block{background:transparent;height:auto;flex:1 1 25%;display:flex;flex-direction:column;max-width:25%;}
+.grid-calli .photo-block img{width:100%;height:100%;max-height:480px;object-fit:contain;transition:transform 0.4s ease;}
+.grid-calli .photo-block:hover img{transform:translateY(-4px);}
+
+/* Keep subtle zoom behavior for cover layout images */
+.grid-music4 .photo-block:hover img, .grid-craft-gallery .photo-block:hover img{transform:scale(1.03);}
+
+.photo-block .tag{position:absolute;bottom:12px;left:12px;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text2);background:rgba(250,246,240,0.82);padding:4px 10px;border:1px solid var(--border);pointer-events:none;z-index:2;}
+html[dir="rtl"] .photo-block .tag{left:auto;right:12px;}
+
+/* GLIMPSE STRIP */
+.glimpse-strip{padding:2.5rem 4rem;text-align:center;background:var(--bg2);}
+.glimpse-strip p{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;font-style:italic;color:var(--text2);letter-spacing:0.02em;}
+html[lang="ar"] .glimpse-strip p{font-family:'Noto Naskh Arabic',serif;font-style:normal;}
+html[lang="he"] .glimpse-strip p{font-family:'Noto Serif Hebrew',serif;}
+@media(max-width:768px){.glimpse-strip{padding:2rem 1.25rem;}}
+
+/* ABOUT */
+.about-section{padding:6rem 4rem;background:var(--bg0);border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);text-align:left;}
+.about-text{max-width:720px;margin:0;}
+.about-text .label{font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold3);margin-bottom:0.75rem;}
+html[lang="ar"] .about-text .label, html[lang="he"] .about-text .label{letter-spacing:0.06em;}
+.about-text h3{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--gold4);margin-bottom:1.2rem;}
+html[lang="ar"] .about-text h3{font-family:'Noto Naskh Arabic',serif;font-weight:700;}
+html[lang="he"] .about-text h3{font-family:'Noto Serif Hebrew',serif;font-weight:600;}
+.about-text p{font-size:0.95rem;color:var(--text3);line-height:1.95;}
+.about-text p+p{margin-top:1rem;}
+
+/* DESKTOP-ONLY RTL MULTILINGUAL MIRROR RULES */
+@media(min-width: 769px) {
+  html[dir="rtl"] .beat-header, html[dir="rtl"] .craft-sub-section, html[dir="rtl"] .about-section{text-align:right;}
+  html[dir="rtl"] .beat-sub, html[dir="rtl"] .craft-section-text, html[dir="rtl"] .about-text{margin-left:auto;margin-right:0;}
+  html[dir="rtl"] .grid-calli{flex-direction:row-reverse;}
+  html[dir="rtl"] .footer-info, html[dir="rtl"] .footer-col-label{text-align:right;}
+
+  /* Corrects the desktop Grid tracking layout for Arabic and Hebrew RTL views */
+  html[dir="rtl"] .grid-music4 {
+    grid-template-columns: 1.2fr 1fr 1.8fr;
+  }
+  html[dir="rtl"] .grid-music4 .p1 {
+    grid-column: 3;
+  }
+  html[dir="rtl"] .grid-music4 .p2 {
+    grid-column: 2;
+  }
+  html[dir="rtl"] .grid-music4 .p3,
+  html[dir="rtl"] .grid-music4 .p4 {
+    grid-column: 1;
+  }
+
+  /* Carpentry gallery layout frozen on desktop view */
+  html[dir="rtl"] .grid-craft-gallery {
+    direction: ltr !important;
+  }
+}
+
+/* FOOTER */
+footer{background:var(--bg0);padding:5rem 4rem 2.5rem;border-top:1px solid var(--border);}
+.footer-top{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-bottom:3rem;}
+html[dir="rtl"] .footer-top{direction:rtl;}
+.footer-col-label{font-size:0.62rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold3);margin-bottom:1.2rem;}
+html[lang="ar"] .footer-col-label, html[lang="he"] .footer-col-label{letter-spacing:0.06em;}
+.footer-info dt{font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text3);margin-top:1rem;margin-bottom:0.2rem;}
+.footer-info dd{font-size:0.9rem;color:var(--text2);font-family:'DM Sans',sans-serif;font-weight:300;}
+html[lang="ar"] .footer-info dd{font-family:'Noto Naskh Arabic',serif;}
+html[lang="he"] .footer-info dd{font-family:'Noto Serif Hebrew',serif;}
+.footer-info dd a{color:var(--text2);text-decoration:none;transition:color 0.3s;}
+.footer-info dd a:hover{color:var(--gold);}
+.footer-wa{display:flex;align-items:center;justify-content:center;gap:0.75rem;width:100%;background:rgba(37,150,60,0.08);border:1px solid rgba(37,150,60,0.25);color:#1a7a35;padding:1.1rem;font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;font-family:'DM Sans',sans-serif;margin-top:1.5rem;}
+html[lang="ar"] .footer-wa, html[lang="he"] .footer-wa{font-family:inherit;letter-spacing:0.04em;}
+.footer-wa:hover{background:rgba(37,150,60,0.14);border-color:rgba(37,150,60,0.4);}
+.footer-bottom{border-top:1px solid var(--border2);padding-top:1.5rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;}
+.footer-bottom span{font-size:0.72rem;letter-spacing:0.1em;color:var(--text3);}
+.footer-bottom .dot{color:var(--gold3);opacity:0.5;}
+
+/* ANIMATIONS */
+.fi{opacity:0;transform:translateY(20px);transition:opacity 0.75s ease,transform 0.75s ease;}
+.fi.v{opacity:1;transform:translateY(0);}
+.fi.d1{transition-delay:0.1s;}.fi.d2{transition-delay:0.2s;}.fi.d3{transition-delay:0.3s;}
+
+/* RESPONSIVE DESIGN */
+@media(max-width:768px){
+  nav{padding:0 1.25rem;}.nav-tabs{display:none;}
+  html[dir="rtl"] nav{flex-direction: row;}
+  .beat, .craft-sub-section{padding:4rem 1.25rem;}.divider{margin:0 1.25rem;}.section-divider{padding:0 1.25rem;}
+  
+  html[dir="rtl"] .beat-header, html[dir="rtl"] .craft-sub-section, html[dir="rtl"] .about-section{text-align:right;}
+  
+  .grid-music4 {
+    direction: ltr !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: 200px 180px 180px !important;
+    gap: 6px !important;
+  }
+  
+  .grid-music4 .p1{grid-column:1 / span 2 !important; grid-row:1 !important;}
+  .grid-music4 .p2{grid-column:1 !important; grid-row:2 !important;} 
+  .grid-music4 .p3{grid-column:2 !important; grid-row:2 !important;} 
+  .grid-music4 .p4{grid-column:1 / span 2 !important; grid-row:3 !important;}
+
+  html[dir="rtl"] .grid-music4 {
+    direction: ltr !important;
+    grid-template-columns: 1fr 1fr !important;
+  }
+  html[dir="rtl"] .grid-music4 .p1 { grid-column: 1 / span 2 !important; grid-row: 1 !important; }
+  html[dir="rtl"] .grid-music4 .p2 { grid-column: 1 !important; grid-row: 2 !important; }
+  html[dir="rtl"] .grid-music4 .p3 { grid-column: 2 !important; grid-row: 2 !important; }
+  html[dir="rtl"] .grid-music4 .p4 { grid-column: 1 / span 2 !important; grid-row: 3 !important; }
+  
+  .grid-calli{flex-direction:column-reverse;align-items:center;gap:24px;}
+  html[dir="rtl"] .grid-calli{flex-direction:column-reverse;}
+  
+  .grid-calli .photo-block{max-width:90%;width:100%;}
+  .grid-craft-gallery{grid-template-columns:1fr;height:auto;gap:12px;direction: ltr !important;}
+  .grid-craft-gallery .photo-block{height:200px;}
+  .about-section{padding:4rem 1.25rem;}
+  footer{padding:4rem 1.25rem 2rem;}.footer-top{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<script>
+const T = {
+  en: {
+    dir: "ltr", lang: "en",
+    logoName: "AlWadi Musical Instruments", logoTagline: "Music · Calligraphy · Craft",
+    navMusic: "Music", navCalli: "Calligraphy", navAbout: "About", navContact: "Contact",
+    heroTitle: "AlWadi Musical Instruments", heroCraft: "Music · Calligraphy · Craft",
+    heroSub: "A music store at heart - and a place where arabic calligraphy and handcrafted artistry feel right at home.",
+    heroVisit: "Visit our store", heroWa: "WhatsApp us",
+    s1title: "Music", s1titleEm: "& Instruments",
+    s1sub: "We sell all kinds of musical instruments, oriental and classical, for beginners and professionals, including ouds, guitars, keyboards, percussion instruments, and more. Instruments with character, for musicians with soul.",
+    s1craftTitle: "Our Carpentry Shop",
+    s1craftText: "Some of our ouds are handbuilt on-site within our store's private carpentry workshop. We also repair instruments for our clients.",
+    s2title: "Calligraphy", s2titleEm: "",
+    s2sub: "Arabic calligraphy artworks - from traditional to contemporary styles. Custom inscriptions and creative compositions are personally written and executed by the shop owner.",
+    aboutLabel: "About Us", aboutTitle: "AlWadi Musical Instruments",
+    aboutP1: "AlWadi Musical Instruments was founded and is run by Bishara Deeb, a professional singer and oud player who has performed on stages for decades, as well as a calligraphy artist. When his deep musical career met his skilled carpentry roots, he became one of the rare master oud builders in the region.",
+    aboutP2: "Our store is renowned not only for selling premium instruments but also for expert instrument repairs. It is a living workshop where authentic ouds are meticulously built by hand, and custom arabic calligraphy is personally drawn and sold.",
+    footerFind: "Find Us",
+    footerAddrLabel: "Address", footerAddr: "Alwadi street 36, Haifa, Israel",
+    footerHoursLabel: "Hours", footerHours: "Monday - Saturday 10:00 - 16:00<br/>Sunday closed",
+    footerPhoneLabel: "Phone", footerInstaLabel: "Instagram",
+    footerTouch: "Get in Touch", footerTouchSub: "The fastest way to reach us — for orders, repairs, custom pieces, or just to say hello.",
+    footerWaBtn: "Open WhatsApp Chat",
+    altMusicImg1:"Music Img 1", altMusicImg2:"Music Img 2", altMusicImg3:"Music Img 3", altMusicImg4:"Music Img 4",
+    altCarpentryImg1:"Carpentry Img 1", altCarpentryImg2:"Carpentry Img 2", altCarpentryImg3:"Carpentry Img 3",
+    altCalligraphyImg1:"Calligraphy Img 1", altCalligraphyImg2:"Calligraphy Img 2", altCalligraphyImg3:"Calligraphy Img 3", altCalligraphyImg4:"Calligraphy Img 4",
+    glimpseText:"This page shows only a small part of what we carry - come visit the store to see everything we have."
+  },
+  ar: {
+    dir: "rtl", lang: "ar",
+    logoName: "الوادي للادوات الموسيقية", logoTagline: "موسيقى · خط · حِرفة",
+    navMusic: "الموسيقى", navCalli: "الخط", navAbout: "عنّا", navContact: "تواصل",
+    heroTitle: "الوادي للادوات الموسيقية", heroCraft: "موسيقى · خط · حِرفة",
+    heroSub: "محل موسيقى في جوهره - ومكان يشعر فيه الخط العربي والفن اليدوي في بيتهما الحقيقي.",
+    heroVisit: "زوروا متجرنا", heroWa: "واتساب",
+    s1title: "الموسيقى", s1titleEm: "والآلات",
+    s1sub: "نبيع جميع أنواع الآلات الموسيقية، الشرقية والكلاسيكية، للمبتدئين والمحترفين، بما في ذلك الأعواد، الجيتارات، آلات المفاتيح، آلات الإيقاع، وأكثر. آلات ذات طابع خاص, لموسيقيين يعزفون من القلب.",
+    s1craftTitle: "مشغل النِجارة الخاص بنا",
+    s1craftText: "بعض الأعواد لدينا تُصنع يدوياً داخل المتجر، في ورشة النجارة الخاصة بنا، حيث يتم تصميمها وبناؤها بالكامل. كما نقوم أيضاً بإصلاح وصيانة الآلات التي نتلقاها من زبائننا.",
+    s2title: "الخط العربي", s2titleEm: "",
+    s2sub: "إبداعات الخط العربي - من الطراز التقليدي إلى المعاصر. تُنفّذ المخطوطات الخاصة والتصاميم الفنية الإبداعية وتُخطّ يدوياً بيد صاحب المتجر.",
+    aboutLabel: "عنّا", aboutTitle: "الوادي للادوات الموسيقية",
+    aboutP1: "متجر الوادي للادوات الموسيقية من إبداع الأستاذ بشارة ديب وإدارته، مغنٍّ محترف وعازف عود قدّم عروضه على المسارح لعقود طويلة، وهو أيضاً فنان خط عربي. عندما التقت مسيرته الموسيقية العميقة مع خبرته في النجارة، أصبح من القلائل في المنطقة في صناعة الأعواد يدوياً.",
+    aboutP2: "يشتهر متجرنا ليس فقط ببيع الآلات الموسيقية الفاخرة، بل وأيضاً بتقديم خدمات صيانة وإصلاح الآلات باحترافية عالية. إنه مشغل حيّ تنبض فيه الحياة؛ حيث تُصنع أعوادنا الأصيلة يدوياً بكل إتقان، وتُخط فيه لوحات الخط العربي المخصصة وتُباع بكل حب.",
+    footerFind: "أين نحن",
+    footerAddrLabel: "العنوان", footerAddr: "شارع الوادي 36، حيفا، إسرائيل",
+    footerHoursLabel: "أوقات العمل", footerHours: "الاثنين - السبت 10:00 - 16:00<br/>الأحد مغلق",
+    footerPhoneLabel: "الهاتف", footerInstaLabel: "إنستغرام",
+    footerTouch: "تواصل معنا", footerTouchSub: "أسرع طريقة للوصول إلينا — للطلبات، الصيانة، القطع المخصصة أو مجرد قول مرحباً.",
+    footerWaBtn: "افتح محادثة واتساب",
+    altMusicImg1:"Music Img 1", altMusicImg2:"Music Img 2", altMusicImg3:"Music Img 3", altMusicImg4:"Music Img 4",
+    altCarpentryImg1:"Carpentry Img 1", altCarpentryImg2:"Carpentry Img 2", altCarpentryImg3:"Carpentry Img 3",
+    altCalligraphyImg1:"Calligraphy Img 1", altCalligraphyImg2:"Calligraphy Img 2", altCalligraphyImg3:"Calligraphy Img 3", altCalligraphyImg4:"Calligraphy Img 4",
+    glimpseText:"ما ترونه هنا ليس إلا جزءاً مما لدينا - تعالوا وزورونا لاستكشاف مجموعتنا الكاملة."
+  },
+  he: {
+    dir: "rtl", lang: "he",
+    logoName: "אלואדי לכלי נגינה", logoTagline: "מוזיקה · קליגרפיה · אומנות",
+    navMusic: "מוזיקה", navCalli: "קליגרפיה", navAbout: "אודות", navContact: "צור קשר",
+    heroTitle: "אלואדי לכלי נגינה", heroCraft: "מוזיקה · קליגרפיה · אומנות",
+    heroSub: "חנות מוזיקה בלב - ומקום שבו קליגרפיה ערבית ואומנות יד מרגישות בבית.",
+    heroVisit: "בקרו בחנות", heroWa: "שלחו וואטסאפ",
+    s1title: "מוזיקה", s1titleEm: "וכלים",
+    s1sub: "אנו מוכרים כל סוגי כלי הנגינה, מזרחיים וקלאסיים, למתחילים ולמקצוענים, כולל עודים, גיטרות, כלי מקלדת, כלי הקשה ועוד. כלים עם אופי, לנגנים עם נשמה.",
+    s1craftTitle: "נגריית האומן שלנו",
+    s1craftText: "חלק מהעודים שלנו נבנים על ידינו בעבודת יד בתוך החנות, בנגרייה הפרטית שלנו, שם הם מתוכננים ומורכבים במלואם. אנו גם מתקנים כלי נגינה שאנו מקבלים מלקוחותינו.",
+    s2title: "קליגרפיה", s2titleEm: "",
+    s2sub: "יצירות קליגרפיה בערבית - מהמסורתי ועד המודרני. יצירות ועיצובים אמנותיים נכתבים ומבוצעים באופן אישי על ידי בעל החנות.",
+    aboutLabel: "אודותינו", aboutTitle: "אלואדי לכלי נגינה",
+    aboutP1: "חנות ״אלואדי לכלי נגינה״ הוקמה ומנוהלת על ידי בשארה דיב, זמר מקצועי ונגן עוד שהופיע על במות במשך עשורים רבים, וכן אמן קליגרפיה. כאשר הניסיון המוזיקלי העמוק שלו פגש את כישורי הנגרות שלו, הוא הפך לאחד מבוני העוד הבודדים והמוערכים באזור.",
+    aboutP2: "החנות שלנו מוכרת וידועה לא רק במכירת כלי נגינה איכותיים, אלא גם בתיקון מקצועי של כלי נגינה. זהו בית מלאכה חי ונושם שבו כלי עוד אותנטיים נבנים בעבודת יד קפדנית, ויצירות קליגרפיה ערבית מותאמות אישית נכתבות ונמכרות במקום.",
+    footerFind: "מצאו אותנו",
+    footerAddrLabel: "כתובת", footerAddr: "רחוב אל-ואדי 36, חיפה, ישראל",
+    footerHoursLabel: "שעות פתיחה", footerHours: "שני - שבת 10:00 - 16:00<br/>יום ראשון סגור",
+    footerPhoneLabel: "טלפון", footerInstaLabel: "אינסטגרם",
+    footerTouch: "צרו קשר", footerTouchSub: "הדרך המהירה ביותר להגיע אלינו — להזמנות, תיקונים, יצירות מותאמות אישית, או פשוט להגיד שלום.",
+    footerWaBtn: "פתחו שיחת וואטסאפ",
+    altMusicImg1:"Music Img 1", altMusicImg2:"Music Img 2", altMusicImg3:"Music Img 3", altMusicImg4:"Music Img 4",
+    altCarpentryImg1:"Carpentry Img 1", altCarpentryImg2:"Carpentry Img 2", altCarpentryImg3:"Carpentry Img 3",
+    altCalligraphyImg1:"Calligraphy Img 1", altCalligraphyImg2:"Calligraphy Img 2", altCalligraphyImg3:"Calligraphy Img 3", altCalligraphyImg4:"Calligraphy Img 4",
+    glimpseText:"מה שאתם רואים כאן הוא רק חלק ממה שיש לנו - בואו לבקר ולגלות את המגוון המלא."
+  }
+};
+
+const WA_SVG = `<svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+*`;
+
+function applyLang(code) {
+  const t = T[code];
+  const html = document.documentElement;
+  html.setAttribute('lang', t.lang);
+  html.setAttribute('dir', t.dir);
+
+  // nav
+  document.querySelector('.logo-name').textContent = t.logoName;
+  document.querySelector('.logo-tagline').textContent = t.logoTagline;
+  document.querySelector('#nav-music').textContent = t.navMusic;
+  document.querySelector('#nav-calli').textContent = t.navCalli;
+  document.querySelector('#nav-about').textContent = t.navAbout;
+  document.querySelector('#nav-contact').textContent = t.navContact;
+
+  // hero
+  document.querySelector('.hero-main-title').textContent = t.heroTitle;
+  document.querySelector('.hero-craft-text').textContent = t.heroCraft;
+  document.querySelector('.hero-sub').textContent = t.heroSub;
+  document.querySelector('#hero-visit').textContent = t.heroVisit;
+  document.querySelector('#hero-wa').innerHTML = WA_SVG + t.heroWa;
+
+  // section headers
+  document.querySelector('#s1-title').innerHTML = t.s1title + '<br/><em>' + t.s1titleEm + '</em>';
+  document.querySelector('#s1-sub').textContent = t.s1sub;
+  document.querySelector('#s1-craft-title').textContent = t.s1craftTitle;
+  document.querySelector('#s1-craft-text').textContent = t.s1craftText;
+
+  document.querySelector('#s2-title').innerHTML = t.s2titleEm ? t.s2title + '<br/><em>' + t.s2titleEm + '</em>' : t.s2title;
+  document.querySelector('#s2-sub').textContent = t.s2sub;
+
+  // about
+  document.querySelector('#about-label').textContent = t.aboutLabel;
+  document.querySelector('#about-title').textContent = t.aboutTitle;
+  document.querySelector('#about-p1').textContent = t.aboutP1;
+  document.querySelector('#about-p2').textContent = t.aboutP2;
+
+  // footer
+  document.querySelector('#footer-find').textContent = t.footerFind;
+  document.querySelector('#footer-addr-label').textContent = t.footerAddrLabel;
+  document.querySelector('#footer-addr').innerHTML = t.footerAddr;
+  document.querySelector('#footer-hours-label').textContent = t.footerHoursLabel;
+  document.querySelector('#footer-hours').innerHTML = t.footerHours;
+  document.querySelector('#footer-phone-label').textContent = t.footerPhoneLabel;
+  document.querySelector('#footer-insta-label').textContent = t.footerInstaLabel;
+  document.querySelector('#footer-touch').textContent = t.footerTouch;
+  document.querySelector('#footer-touch-sub').textContent = t.footerTouchSub;
+  document.querySelector('#footer-wa-btn').innerHTML = WA_SVG + t.footerWaBtn;
+
+  // image alt attributes for translation/accessibility
+  const imgAlts = {
+    'music-img1': t.altMusicImg1, 'music-img2': t.altMusicImg2, 'music-img3': t.altMusicImg3, 'music-img4': t.altMusicImg4,
+    'carpentry-img1': t.altCarpentryImg1, 'carpentry-img2': t.altCarpentryImg2, 'carpentry-img3': t.altCarpentryImg3,
+    'calligraphy-img1': t.altCalligraphyImg1, 'calligraphy-img2': t.altCalligraphyImg2, 'calligraphy-img3': t.altCalligraphyImg3, 'calligraphy-img4': t.altCalligraphyImg4
+  };
+  Object.keys(imgAlts).forEach(id => { const el = document.getElementById(id); if(el) el.setAttribute('alt', imgAlts[id]); });
+
+  // glimpse strip
+  document.querySelector('#glimpse-text').textContent = t.glimpseText;
+
+  // Highlight active lang button
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('data-lang') === code);
+  });
+}
+</script>
+
+<nav>
+  <div class="nav-logo">
+    <img src="Images/logo.png" class="nav-logo-img" alt="Alwadi Music Logo Emblem">
+    <div class="logo-text-group">
+      <span class="logo-name">AlWadi Musical Instruments</span>
+      <span class="logo-tagline">Music · Calligraphy · Craft</span>
+    </div>
+  </div>
+  <div class="nav-right">
+    <ul class="nav-tabs">
+      <li><a href="#music" id="nav-music">Music</a></li>
+      <li><a href="#calligraphy" id="nav-calli">Calligraphy</a></li>
+      <li><a href="#about" id="nav-about">About</a></li>
+      <li><a href="#contact" id="nav-contact">Contact</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn" data-lang="ar" onclick="applyLang('ar')">AR</button>
+      <button class="lang-btn" data-lang="he" onclick="applyLang('he')">HE</button>
+      <button class="lang-btn active" data-lang="en" onclick="applyLang('en')">EN</button>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg-glow"></div>
+  <div class="hero-ornament">الوادي</div>
+  <div class="hero-content">
+    <div class="hero-main-title fi">AlWadi Musical Instruments</div>
+    <div class="hero-craft fi d1">
+      <span class="hero-craft-text">Music · Calligraphy · Craft</span>
+    </div>
+    <p class="hero-sub fi d2">A music store at heart - and a place where arabic calligraphy and handcrafted artistry feel right at home.</p>
+    <div class="hero-actions fi d3">
+      <a href="#music" class="btn-gold" id="hero-visit">Visit our store</a>
+      <a href="https://wa.me/97252692412" class="btn-wa" id="hero-wa" target="_blank">
+        <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp us
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+<div class="section-divider fi"><div class="section-divider-line"></div></div>
+
+<section class="beat" id="music">
+  <div class="beat-header">
+    <div class="fi d1">
+      <h2 class="beat-title" id="s1-title">Music<br/><em>& Instruments</em></h2>
+      <p class="beat-sub" id="s1-sub">We sell all kinds of musical instruments, oriental and classical, for beginners and professionals, including ouds, guitars, keyboards, percussion instruments, and more. Instruments with character, for musicians with soul.</p>
+    </div>
+  </div>
+  
+  <div class="grid-music4 fi d1">
+    <div class="photo-block p1">
+      <img id="music-img1" src="Images/Music/img1.jpg" alt="Music Img 1">
+    </div>
+    <div class="photo-block p2">
+      <img id="music-img2" src="Images/Music/img2.jpg" alt="Music Img 2">
+    </div>
+    <div class="photo-block p3">
+      <img id="music-img3" src="Images/Music/img3.jpg" alt="Music Img 3">
+    </div>
+    <div class="photo-block p4">
+      <img id="music-img4" src="Images/Music/img4.jpg" alt="Music Img 4" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 80%;">
+    </div>
+  </div>
+</section>
+
+<div class="craft-sub-section fi">
+  <h3 class="craft-section-title" id="s1-craft-title">Our Carpentry Shop</h3>
+  <p class="craft-section-text" id="s1-craft-text">Some of our ouds are handbuilt on-site within our store's private carpentry workshop. We also repair instruments for our clients.</p>
+  
+  <div class="grid-craft-gallery">
+    <div class="photo-block"><img id="carpentry-img1" src="Images/Carpentry/img1.jpg" alt="Carpentry Img 1"></div>
+    <div class="photo-block"><img id="carpentry-img2" src="Images/Carpentry/img2.jpg" alt="Carpentry Img 2"></div>
+    <div class="photo-block"><img id="carpentry-img3" src="Images/Carpentry/img3.jpg" alt="Carpentry Img 3" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%;"></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<div class="section-divider fi"><div class="section-divider-line"></div></div>
+
+<section class="beat" id="calligraphy" style="background:var(--bg2);">
+  <div class="beat-header">
+    <div class="fi d1">
+      <h2 class="beat-title" id="s2-title">Calligraphy</h2>
+      <div class="beat-sub">
+        <p id="s2-sub">Arabic calligraphy artworks - from traditional to contemporary styles. Custom inscriptions and creative compositions are personally written and executed by the shop owner.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="grid-calli fi d2">
+    <div class="photo-block">
+      <img id="calligraphy-img1" src="Images/Calligraphy/img1.jpg" alt="Calligraphy Img 1">
+    </div>
+    <div class="photo-block">
+      <img id="calligraphy-img2" src="Images/Calligraphy/img2.jpg" alt="Calligraphy Img 2">
+    </div>
+    <div class="photo-block">
+      <img id="calligraphy-img3" src="Images/Calligraphy/img3.jpg" alt="Calligraphy Img 3">
+    </div>
+    <div class="photo-block">
+      <img id="calligraphy-img4" src="Images/Calligraphy/img4.jpg" alt="Calligraphy Img 4">
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+<div class="glimpse-strip fi">
+  <p id="glimpse-text">This page shows only a small part of what we carry - come visit the store to see everything we have.</p>
+</div>
+<div class="divider"></div>
+<section class="about-section" id="about">
+  <div style="display:flex; gap:2rem; align-items:flex-start; flex-wrap:wrap;">
+    
+    <div class="about-text fi d1" style="flex:1; min-width:300px;">
+      <p class="label" id="about-label">About Us</p>
+      <h3 id="about-title">AlWadi Musical Instruments</h3>
+      <p id="about-p1">AlWadi Musical Instruments was founded and is run by Bishara Deeb, a professional singer and oud player who has performed on stages for decades, as well as a calligraphy artist. When his deep musical career met his skilled carpentry roots, he became one of the rare master oud builders in the region.</p>
+      <p id="about-p2">Our store is renowned not only for selling premium instruments but also for expert instrument repairs. It is a living workshop where authentic ouds are meticulously built by hand, and custom arabic calligraphy is personally drawn and sold.</p>
+    </div>
+
+    <div class="fi d2" style="flex:1; min-width:300px;">
+      <img src="Images/about-us.jpg" alt="About Alwadi Music" style="width:100%; height:auto; border-radius:4px;">
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-top">
+    <div class="fi">
+      <p class="footer-col-label" id="footer-find">Find Us</p>
+      <dl class="footer-info">
+        <dt id="footer-addr-label">Address</dt>
+        <dd id="footer-addr">Alwadi street 36, Haifa, Israel</dd>
+        <dt id="footer-hours-label">Hours</dt>
+        <dd id="footer-hours">Monday - Saturday 10:00 - 16:00<br/>Sunday closed</dd>
+        <dt id="footer-phone-label">Phone</dt>
+	<dd>
+	    <a href="tel:+972522692412" style="direction: ltr; unicode-bidi: isolate; display: inline-block; text-decoration: none; color: inherit;">
+		+972&#8239;522-692-412
+	    </a>
+	</dd>
+        <dt id="footer-insta-label">Instagram</dt>
+        <dd><a href="https://instagram.com/alwadimusic" target="_blank">@alwadimusic</a></dd>
+      </dl>
+    </div>
+    <div class="fi d1">
+      <p class="footer-col-label" id="footer-touch">Get in Touch</p>
+      <p id="footer-touch-sub" style="font-size:0.88rem;color:var(--text3);line-height:1.8;margin-bottom:0.5rem;">The fastest way to reach us — for orders, custom pieces, or just to say hello.</p>
+      <a href="https://wa.me/972528566283" class="footer-wa" id="footer-wa-btn" target="_blank">
+        <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Open WhatsApp Chat
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>الوادي للادوات الموسيقى</span><span class="dot">·</span>
+    <span>אלואדי לכלי נגינה</span><span class="dot">·</span>
+    <span>Alwadi for musical instruments</span><span class="dot">·</span>
+    <span style="color:var(--text3);">© 2026</span>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(e => e.forEach(x => x.isIntersecting && x.target.classList.add('v')), {threshold: 0.1});
+document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
