@@ -47,15 +47,30 @@ html[dir="rtl"] .nav-logo{flex-direction:row-reverse;}
   text-decoration:none;
 }
 .nav-logo .logo-tagline{font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text3);margin-top:3px;}
-.nav-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
-html[dir="rtl"] .nav-right{align-items:flex-start;}
+.nav-right{display:flex;flex-direction:row;align-items:center;gap:2rem;}
+html[dir="rtl"] .nav-right{flex-direction:row-reverse;}
 .nav-tabs{display:flex;gap:2rem;list-style:none;}
 .nav-tabs a{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);text-decoration:none;transition:color 0.3s;}
 .nav-tabs a:hover{color:var(--gold);}
 html[lang="ar"] .nav-tabs a, html[lang="he"] .nav-tabs a{letter-spacing:0.04em;}
-.lang-switcher{display:flex;gap:0.5rem;align-items:center;}
-.lang-btn{font-size:0.65rem;letter-spacing:0.1em;padding:2px 8px;background:transparent;border:1px solid var(--border);color:var(--text3);cursor:pointer;transition:all 0.3s;font-family:'DM Sans',sans-serif;}
-.lang-btn.active,.lang-btn:hover{border-color:var(--gold3);color:var(--gold);background:rgba(232,200,122,0.06);}
+.lang-switcher{display:flex;align-items:center;}
+.lang-select{font-size:0.78rem;letter-spacing:0.12em;background:transparent;border:none;outline:none;color:var(--text3);cursor:pointer;font-family:'DM Sans',sans-serif;appearance:none;-webkit-appearance:none;padding:2px 18px 2px 4px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238a6840' stroke-width='1.3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 2px center;transition:color 0.3s;}
+.lang-select:hover,.lang-select:focus{color:var(--gold);}
+.lang-select option{color:var(--text);background:var(--bg1);}
+
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:transparent;border:none;cursor:pointer;padding:4px;flex-shrink:0;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--gold);transition:all 0.3s ease;transform-origin:center;}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
+/* MOBILE MENU OVERLAY */
+.mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:rgba(250,246,240,0.98);backdrop-filter:blur(20px);z-index:199;flex-direction:column;align-items:center;padding:1.5rem 0 2rem;gap:1.4rem;opacity:0;transition:opacity 0.3s ease;border-bottom:1px solid var(--border);}
+.mobile-menu.open{opacity:1;}
+.mobile-menu a{font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text2);text-decoration:none;transition:color 0.3s;}
+.mobile-menu a:hover{color:var(--gold);}
+.mobile-menu .mob-lang{margin-top:0.5rem;border-top:1px solid var(--border2);padding-top:1rem;}
 
 /* HERO */
 .hero-logo-img{width:300px;height:300px;object-fit:contain;margin-bottom:1.2rem;}
@@ -193,8 +208,10 @@ html[lang="ar"] .footer-wa, html[lang="he"] .footer-wa{font-family:inherit;lette
 
 /* RESPONSIVE DESIGN */
 @media(max-width:768px){
-  nav{padding:0 1.25rem;}.nav-tabs{display:none;}
-  html[dir="rtl"] nav{flex-direction: row;}
+  nav{padding:0 1.25rem;justify-content:flex-start;}.nav-tabs{display:none;}
+  .nav-right{display:none;}
+  .hamburger{display:flex;position:fixed;top:18px;right:1.25rem;}
+  .mobile-menu{display:flex;}
   .beat, .craft-sub-section{padding:4rem 1.25rem;}.divider{margin:0 1.25rem;}.section-divider{padding:0 1.25rem;}
   
   html[dir="rtl"] .beat-header, html[dir="rtl"] .craft-sub-section, html[dir="rtl"] .about-section{text-align:right;}
@@ -377,10 +394,31 @@ function applyLang(code) {
   // glimpse strip
   document.querySelector('#glimpse-text').textContent = t.glimpseText;
 
-  // Highlight active lang button
-  document.querySelectorAll('.lang-btn').forEach(b => {
-    b.classList.toggle('active', b.getAttribute('data-lang') === code);
-  });
+  // Sync dropdown
+  const sel = document.getElementById('lang-select');
+  if(sel) sel.value = code;
+  document.querySelectorAll('.lang-select').forEach(s => s.value = code);
+
+  // Sync mobile menu labels
+  const mobMusic = document.getElementById('mob-music');
+  const mobCalli = document.getElementById('mob-calli');
+  const mobAbout = document.getElementById('mob-about');
+  const mobContact = document.getElementById('mob-contact');
+  if(mobMusic) mobMusic.textContent = t.navMusic;
+  if(mobCalli) mobCalli.textContent = t.navCalli;
+  if(mobAbout) mobAbout.textContent = t.navAbout;
+  if(mobContact) mobContact.textContent = t.navContact;
+}
+
+function toggleMenu(){
+  const hb = document.getElementById('hamburger');
+  const mm = document.getElementById('mobile-menu');
+  hb.classList.toggle('open');
+  mm.classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobile-menu').classList.remove('open');
 }
 </script>
 
@@ -398,12 +436,31 @@ function applyLang(code) {
       <li><a href="#contact" id="nav-contact">Contact</a></li>
     </ul>
     <div class="lang-switcher">
-      <button class="lang-btn" data-lang="ar" onclick="applyLang('ar')">AR</button>
-      <button class="lang-btn" data-lang="he" onclick="applyLang('he')">HE</button>
-      <button class="lang-btn active" data-lang="en" onclick="applyLang('en')">EN</button>
+      <select class="lang-select" id="lang-select" onchange="applyLang(this.value)">
+        <option value="en" selected>Eng</option>
+        <option value="ar">Ar</option>
+        <option value="he">Heb</option>
+      </select>
     </div>
   </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#music" id="mob-music" onclick="closeMenu()">Music</a>
+  <a href="#calligraphy" id="mob-calli" onclick="closeMenu()">Calligraphy</a>
+  <a href="#about" id="mob-about" onclick="closeMenu()">About</a>
+  <a href="#contact" id="mob-contact" onclick="closeMenu()">Contact</a>
+  <div class="mob-lang">
+    <select class="lang-select" onchange="applyLang(this.value);document.getElementById('lang-select').value=this.value;">
+      <option value="en">Eng</option>
+      <option value="ar">Ar</option>
+      <option value="he">Heb</option>
+    </select>
+  </div>
+</div>
 
 <section class="hero">
   <div class="hero-bg-glow"></div>
@@ -538,7 +595,7 @@ function applyLang(code) {
   <div class="footer-bottom">
     <span>الوادي للادوات الموسيقى</span><span class="dot">·</span>
     <span>אלואדי לכלי נגינה</span><span class="dot">·</span>
-    <span>Alwadi for musical instruments</span><span class="dot">·</span>
+    <span>Alwadi musical instruments</span><span class="dot">·</span>
     <span style="color:var(--text3);">© 2026</span>
   </div>
 </footer>
