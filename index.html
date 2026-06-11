@@ -58,6 +58,7 @@ html[lang="ar"] .nav-tabs a, html[lang="he"] .nav-tabs a{letter-spacing:0.04em;}
 .lang-btn.active,.lang-btn:hover{border-color:var(--gold3);color:var(--gold);background:rgba(232,200,122,0.06);}
 
 /* HERO */
+.hero-logo-img{width:300px;height:300px;object-fit:contain;margin-bottom:1.2rem;}
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;position:relative;overflow:hidden;}
 .hero-bg-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 45% at 50% 40%,rgba(196,149,42,0.10) 0%,transparent 65%);}
 .hero-ornament{font-family:'Noto Naskh Arabic',serif;font-size:9rem;font-weight:700;color:rgba(139,105,20,0.07);line-height:1;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;white-space:nowrap;direction:rtl;letter-spacing:-0.02em;}
@@ -236,7 +237,7 @@ html[lang="ar"] .footer-wa, html[lang="he"] .footer-wa{font-family:inherit;lette
 const T = {
   en: {
     dir: "ltr", lang: "en",
-    logoName: "AlWadi Musical Instruments", logoTagline: "Music · Calligraphy · Craft",
+    logoName: "AlWadi Musical Instruments",
     navMusic: "Music", navCalli: "Calligraphy", navAbout: "About", navContact: "Contact",
     heroTitle: "AlWadi Musical Instruments", heroCraft: "Music · Calligraphy · Craft",
     heroSub: "A music store at heart - and a place where arabic calligraphy and handcrafted artistry feel right at home.",
@@ -255,7 +256,7 @@ const T = {
     footerHoursLabel: "Hours", footerHours: "Monday - Saturday 10:00 - 16:00<br/>Sunday closed",
     footerPhoneLabel: "Phone", footerInstaLabel: "Instagram",
     footerTouch: "Get in Touch", footerTouchSub: "The fastest way to reach us — for orders, repairs, custom pieces, or just to say hello.",
-    footerWaBtn: "Open WhatsApp Chat",
+    footerWaBtn: "WhatsApp us",
     altMusicImg1:"Music Img 1", altMusicImg2:"Music Img 2", altMusicImg3:"Music Img 3", altMusicImg4:"Music Img 4",
     altCarpentryImg1:"Carpentry Img 1", altCarpentryImg2:"Carpentry Img 2", altCarpentryImg3:"Carpentry Img 3",
     altCalligraphyImg1:"Calligraphy Img 1", altCalligraphyImg2:"Calligraphy Img 2", altCalligraphyImg3:"Calligraphy Img 3", altCalligraphyImg4:"Calligraphy Img 4",
@@ -263,26 +264,26 @@ const T = {
   },
   ar: {
     dir: "rtl", lang: "ar",
-    logoName: "الوادي للادوات الموسيقية", logoTagline: "موسيقى · خط · حِرفة",
+    logoName: "الوادي للادوات الموسيقية",
     navMusic: "الموسيقى", navCalli: "الخط", navAbout: "عنّا", navContact: "تواصل",
     heroTitle: "الوادي للادوات الموسيقية", heroCraft: "موسيقى · خط · حِرفة",
-    heroSub: "محل موسيقى في جوهره - ومكان يشعر فيه الخط العربي والفن اليدوي في بيتهما الحقيقي.",
+    heroSub: "متجر موسيقى في جوهره - ومكان يشعر فيه الخط العربي والفن اليدوي في بيتهما الحقيقي.",
     heroVisit: "زوروا متجرنا", heroWa: "واتساب",
     s1title: "الموسيقى", s1titleEm: "والآلات",
-    s1sub: "نبيع جميع أنواع الآلات الموسيقية، الشرقية والكلاسيكية، للمبتدئين والمحترفين، بما في ذلك الأعواد، الجيتارات، آلات المفاتيح، آلات الإيقاع، وأكثر. آلات ذات طابع خاص, لموسيقيين يعزفون من القلب.",
+    s1sub: "نبيع جميع أنواع الآلات الموسيقية, الشرقية والكلاسيكية, للمبتدئين والمحترفين, بما في ذلك الأعواد, الجيتارات, آلات المفاتيح, آلات الإيقاع, وأكثر. آلات ذات طابع خاص, لموسيقيين يعزفون من القلب.",
     s1craftTitle: "مشغل النِجارة الخاص بنا",
-    s1craftText: "بعض الأعواد لدينا تُصنع يدوياً داخل المتجر، في ورشة النجارة الخاصة بنا، حيث يتم تصميمها وبناؤها بالكامل. كما نقوم أيضاً بإصلاح وصيانة الآلات التي نتلقاها من زبائننا.",
+    s1craftText: "بعض الأعواد لدينا تُصنع يدوياً داخل المتجر, في ورشة النجارة الخاصة بنا, حيث يتم تصميمها وبناؤها بالكامل. كما نقوم أيضاً بإصلاح وصيانة الآلات التي نتلقاها من زبائننا.",
     s2title: "الخط العربي", s2titleEm: "",
     s2sub: "إبداعات الخط العربي - من الطراز التقليدي إلى المعاصر. تُنفّذ المخطوطات الخاصة والتصاميم الفنية الإبداعية وتُخطّ يدوياً بيد صاحب المتجر.",
     aboutLabel: "عنّا", aboutTitle: "الوادي للادوات الموسيقية",
-    aboutP1: "متجر الوادي للادوات الموسيقية من إبداع الأستاذ بشارة ديب وإدارته، مغنٍّ محترف وعازف عود قدّم عروضه على المسارح لعقود طويلة، وهو أيضاً فنان خط عربي. عندما التقت مسيرته الموسيقية العميقة مع خبرته في النجارة، أصبح من القلائل في المنطقة في صناعة الأعواد يدوياً.",
-    aboutP2: "يشتهر متجرنا ليس فقط ببيع الآلات الموسيقية الفاخرة، بل وأيضاً بتقديم خدمات صيانة وإصلاح الآلات باحترافية عالية. إنه مشغل حيّ تنبض فيه الحياة؛ حيث تُصنع أعوادنا الأصيلة يدوياً بكل إتقان، وتُخط فيه لوحات الخط العربي المخصصة وتُباع بكل حب.",
+    aboutP1: "متجر الوادي للادوات الموسيقية من إبداع الأستاذ بشارة ديب وإدارته, مغنٍّ محترف وعازف عود قدّم عروضه على المسارح لعقود طويلة, وهو أيضاً فنان خط عربي. عندما التقت مسيرته الموسيقية العميقة مع خبرته في النجارة, أصبح من القلائل في المنطقة في صناعة الأعواد يدوياً.",
+    aboutP2: "يشتهر متجرنا ليس فقط ببيع الآلات الموسيقية الفاخرة, بل وأيضاً بتقديم خدمات صيانة وإصلاح الآلات باحترافية عالية. إنه مشغل حيّ تنبض فيه الحياة, حيث تُصنع أعوادنا الأصيلة يدوياً بكل إتقان, وتُخط فيه لوحات الخط العربي المخصصة وتُباع بكل حب.",
     footerFind: "أين نحن",
-    footerAddrLabel: "العنوان", footerAddr: "شارع الوادي 36، حيفا، إسرائيل",
+    footerAddrLabel: "العنوان", footerAddr: "شارع الوادي 36, حيفا, إسرائيل",
     footerHoursLabel: "أوقات العمل", footerHours: "الاثنين - السبت 10:00 - 16:00<br/>الأحد مغلق",
     footerPhoneLabel: "الهاتف", footerInstaLabel: "إنستغرام",
-    footerTouch: "تواصل معنا", footerTouchSub: "أسرع طريقة للوصول إلينا — للطلبات، الصيانة، القطع المخصصة أو مجرد قول مرحباً.",
-    footerWaBtn: "افتح محادثة واتساب",
+    footerTouch: "تواصل معنا", footerTouchSub: "أسرع طريقة للوصول إلينا — للطلبات, الصيانة, القطع المخصصة أو مجرد قول مرحباً.",
+    footerWaBtn: "واتساب",
     altMusicImg1:"Music Img 1", altMusicImg2:"Music Img 2", altMusicImg3:"Music Img 3", altMusicImg4:"Music Img 4",
     altCarpentryImg1:"Carpentry Img 1", altCarpentryImg2:"Carpentry Img 2", altCarpentryImg3:"Carpentry Img 3",
     altCalligraphyImg1:"Calligraphy Img 1", altCalligraphyImg2:"Calligraphy Img 2", altCalligraphyImg3:"Calligraphy Img 3", altCalligraphyImg4:"Calligraphy Img 4",
@@ -290,7 +291,7 @@ const T = {
   },
   he: {
     dir: "rtl", lang: "he",
-    logoName: "אלואדי לכלי נגינה", logoTagline: "מוזיקה · קליגרפיה · אומנות",
+    logoName: "אלואדי לכלי נגינה",
     navMusic: "מוזיקה", navCalli: "קליגרפיה", navAbout: "אודות", navContact: "צור קשר",
     heroTitle: "אלואדי לכלי נגינה", heroCraft: "מוזיקה · קליגרפיה · אומנות",
     heroSub: "חנות מוזיקה בלב - ומקום שבו קליגרפיה ערבית ואומנות יד מרגישות בבית.",
@@ -309,7 +310,7 @@ const T = {
     footerHoursLabel: "שעות פתיחה", footerHours: "שני - שבת 10:00 - 16:00<br/>יום ראשון סגור",
     footerPhoneLabel: "טלפון", footerInstaLabel: "אינסטגרם",
     footerTouch: "צרו קשר", footerTouchSub: "הדרך המהירה ביותר להגיע אלינו — להזמנות, תיקונים, יצירות מותאמות אישית, או פשוט להגיד שלום.",
-    footerWaBtn: "פתחו שיחת וואטסאפ",
+    footerWaBtn: "שלחו וואטסאפ",
     altMusicImg1:"Music Img 1", altMusicImg2:"Music Img 2", altMusicImg3:"Music Img 3", altMusicImg4:"Music Img 4",
     altCarpentryImg1:"Carpentry Img 1", altCarpentryImg2:"Carpentry Img 2", altCarpentryImg3:"Carpentry Img 3",
     altCalligraphyImg1:"Calligraphy Img 1", altCalligraphyImg2:"Calligraphy Img 2", altCalligraphyImg3:"Calligraphy Img 3", altCalligraphyImg4:"Calligraphy Img 4",
@@ -328,18 +329,15 @@ function applyLang(code) {
 
   // nav
   document.querySelector('.logo-name').textContent = t.logoName;
-  document.querySelector('.logo-tagline').textContent = t.logoTagline;
   document.querySelector('#nav-music').textContent = t.navMusic;
   document.querySelector('#nav-calli').textContent = t.navCalli;
   document.querySelector('#nav-about').textContent = t.navAbout;
   document.querySelector('#nav-contact').textContent = t.navContact;
 
   // hero
-  document.querySelector('.hero-main-title').textContent = t.heroTitle;
   document.querySelector('.hero-craft-text').textContent = t.heroCraft;
   document.querySelector('.hero-sub').textContent = t.heroSub;
   document.querySelector('#hero-visit').textContent = t.heroVisit;
-  document.querySelector('#hero-wa').innerHTML = WA_SVG + t.heroWa;
 
   // section headers
   document.querySelector('#s1-title').innerHTML = t.s1title + '<br/><em>' + t.s1titleEm + '</em>';
@@ -388,10 +386,8 @@ function applyLang(code) {
 
 <nav>
   <div class="nav-logo">
-    <img src="Images/logo.png" class="nav-logo-img" alt="Alwadi Music Logo Emblem">
     <div class="logo-text-group">
       <span class="logo-name">AlWadi Musical Instruments</span>
-      <span class="logo-tagline">Music · Calligraphy · Craft</span>
     </div>
   </div>
   <div class="nav-right">
@@ -411,19 +407,14 @@ function applyLang(code) {
 
 <section class="hero">
   <div class="hero-bg-glow"></div>
-  <div class="hero-ornament">الوادي</div>
   <div class="hero-content">
-    <div class="hero-main-title fi">AlWadi Musical Instruments</div>
+    <img src="Images/logo.png" class="hero-logo-img fi" alt="AlWadi Musical Instruments">
     <div class="hero-craft fi d1">
       <span class="hero-craft-text">Music · Calligraphy · Craft</span>
     </div>
     <p class="hero-sub fi d2">A music store at heart - and a place where arabic calligraphy and handcrafted artistry feel right at home.</p>
     <div class="hero-actions fi d3">
       <a href="#music" class="btn-gold" id="hero-visit">Visit our store</a>
-      <a href="https://wa.me/972522692412" class="btn-wa" id="hero-wa" target="_blank">
-        <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp us
-      </a>
     </div>
   </div>
 </section>
@@ -538,9 +529,9 @@ function applyLang(code) {
     <div class="fi d1">
       <p class="footer-col-label" id="footer-touch">Get in Touch</p>
       <p id="footer-touch-sub" style="font-size:0.88rem;color:var(--text3);line-height:1.8;margin-bottom:0.5rem;">The fastest way to reach us — for orders, custom pieces, or just to say hello.</p>
-      <a href="https://wa.me/972528566283" class="footer-wa" id="footer-wa-btn" target="_blank">
+      <a href="https://wa.me/972522692412" class="footer-wa" id="footer-wa-btn" target="_blank">
         <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Open WhatsApp Chat
+        WhatsApp us
       </a>
     </div>
   </div>
