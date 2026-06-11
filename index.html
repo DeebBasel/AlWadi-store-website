@@ -208,9 +208,10 @@ html[lang="ar"] .footer-wa, html[lang="he"] .footer-wa{font-family:inherit;lette
 
 /* RESPONSIVE DESIGN */
 @media(max-width:768px){
-  nav{padding:0 1.25rem;justify-content:flex-start;}.nav-tabs{display:none;}
-  .nav-right{display:none;}
-  .hamburger{display:flex;position:fixed;top:18px;right:1.25rem;}
+  nav{padding:0 1.25rem;justify-content:space-between;}.nav-tabs{display:none;}
+  .nav-right{display:flex;flex-direction:row;align-items:center;gap:0.75rem;}
+  html[dir="rtl"] .nav-right{flex-direction:row-reverse;}
+  .hamburger{display:flex;position:static;margin:0;}
   .mobile-menu{display:flex;}
   .beat, .craft-sub-section{padding:4rem 1.25rem;}.divider{margin:0 1.25rem;}.section-divider{padding:0 1.25rem;}
   
@@ -420,6 +421,24 @@ function closeMenu(){
   document.getElementById('hamburger').classList.remove('open');
   document.getElementById('mobile-menu').classList.remove('open');
 }
+// Close menu on outside click
+document.addEventListener('click', function(e){
+  const mm = document.getElementById('mobile-menu');
+  const hb = document.getElementById('hamburger');
+  if(mm && mm.classList.contains('open') && !mm.contains(e.target) && !hb.contains(e.target)){
+    closeMenu();
+  }
+});
+// Visit our store → scroll to music section only
+document.addEventListener('DOMContentLoaded', function(){
+  const btn = document.getElementById('hero-visit');
+  if(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      document.getElementById('music').scrollIntoView({behavior:'smooth'});
+    });
+  }
+});
 </script>
 
 <nav>
@@ -442,10 +461,10 @@ function closeMenu(){
         <option value="he">Heb</option>
       </select>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
 
 <div class="mobile-menu" id="mobile-menu">
@@ -453,13 +472,6 @@ function closeMenu(){
   <a href="#calligraphy" id="mob-calli" onclick="closeMenu()">Calligraphy</a>
   <a href="#about" id="mob-about" onclick="closeMenu()">About</a>
   <a href="#contact" id="mob-contact" onclick="closeMenu()">Contact</a>
-  <div class="mob-lang">
-    <select class="lang-select" onchange="applyLang(this.value);document.getElementById('lang-select').value=this.value;">
-      <option value="en">Eng</option>
-      <option value="ar">Ar</option>
-      <option value="he">Heb</option>
-    </select>
-  </div>
 </div>
 
 <section class="hero">
